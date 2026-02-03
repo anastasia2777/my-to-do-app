@@ -27,5 +27,5 @@ Create, view, edit, and delete tasks with user-friendly notifications and Bootst
 3. Install dependencies
 4. Create a .env file in the root directory
 5. Apply migrations
-6. Run the development server:confetti_ball
+6. Run the development server :confetti_ball
 
