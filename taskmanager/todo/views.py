@@ -52,11 +52,12 @@ class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, '✏️ Задача обновлена!')
         return super().form_valid(form)
-
+@login_required
 def task_delete(request, pk):
-    task=get_object_or_404(Task, pk=pk)
+    task=get_object_or_404(Task, pk=pk, user=request.user)
     if request.method=="POST":
         task.delete()
+        messages.success(request, "🗑️ Задача удалена!")
         return redirect('todo:task_list')
     return render(request, 'todo/task_confirm_delete.html', {'task':task})
 
