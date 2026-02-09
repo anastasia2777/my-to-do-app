@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+
 from .models import Task
 
 class TaskForm(forms.ModelForm):
@@ -11,6 +13,16 @@ class TaskForm(forms.ModelForm):
             'title':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Введите название'}),
             'description':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Введите описание'})
         }
+
+    def clean_title(self):
+        title = self.cleaned_data.get('title', )
+        forbidden_words = ["ужас", "ненавижу", "отстой"]
+
+        for word in forbidden_words:
+            if word.lower() in title.lower():
+                raise ValidationError(f"Нельзя использовать слово {word}, это слишком грубо")
+        return title
+
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(
         label = 'Логин',
