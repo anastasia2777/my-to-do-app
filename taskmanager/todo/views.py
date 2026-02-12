@@ -7,6 +7,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
+from django.http import JsonResponse
 
 from .forms import TaskForm, CustomUserCreationForm
 from .forms import CustomAuthenticationForm
@@ -84,3 +85,4 @@ class CustomLogoutView(LogoutView):
         response = super().dispatch(request, *args, **kwargs)
         messages.info(request, "Вы успешно вышли из системы.")
         return response
+

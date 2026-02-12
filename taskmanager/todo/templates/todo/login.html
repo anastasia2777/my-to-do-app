@@ -1,20 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Вход в систему</title>
-</head>
-<body>
-    <h2>Войти</h2>
+{% extends "todo/base.html" %}
+
+{% block title %}Вход в систему{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Войти</h1>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Войти</button>
+
+        {% for field in form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="invalid-feedback d-block">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </div>
     </form>
 
     {% if form.errors %}
         <p style="color: red;">Неверный логин или пароль.</p>
     {% endif %}
-</body>
-</html>
+{% endblock %}
