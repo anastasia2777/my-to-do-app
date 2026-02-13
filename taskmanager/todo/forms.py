@@ -5,6 +5,8 @@ from django.core.exceptions import ValidationError
 
 from .models import Task
 
+FORBIDDEN_WORDS = ["ужас", "ненавижу", "отстой"]
+
 class TaskForm(forms.ModelForm):
     class Meta:
         model=Task
@@ -14,14 +16,20 @@ class TaskForm(forms.ModelForm):
             'description':forms.Textarea(attrs={'class':'form-control', 'placeholder':'Введите описание'})
         }
 
+    def _validate_forbidden_words(self, value, field_name):
+        for word in FORBIDDEN_WORDS:
+            if word.lower() in value.lower():
+                raise ValidationError(f"Нельзя использовать слово «{word}» в поле «{field_name}», это слишком грубо")
+        return value
+
     def clean_title(self):
         title = self.cleaned_data.get('title', )
-        forbidden_words = ["ужас", "ненавижу", "отстой"]
+        return self._validate_forbidden_words(title, 'название задачи')
 
-        for word in forbidden_words:
-            if word.lower() in title.lower():
-                raise ValidationError(f"Нельзя использовать слово {word}, это слишком грубо")
-        return title
+    def clean_description(self):
+        description = self.cleaned_data.get('description', )
+        return self._validate_forbidden_words(description, 'описание')
+
 
 class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(

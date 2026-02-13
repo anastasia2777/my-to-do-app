@@ -4,7 +4,8 @@
 
 
 {% block content %}
-    <h1 class="my-4">Форма задачи</h1>
+    <h1 class="my-4">Создание задачи</h1>
+
     <form method="post">
         {% csrf_token %}
         {% for field in form %}
@@ -20,5 +21,6 @@
         {% endfor %}
 
         <button type="submit" class="btn btn-success">Сохранить</button>
+        <a href="{% url 'todo:task_list' %}" class="btn btn-secondary" aria-label="Отменить создание">Отмена</a>
     </form>
 {% endblock %}

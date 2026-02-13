@@ -1,12 +1,15 @@
 {% extends "todo/base.html" %}
-{% block title %}Удаление задачи{% endblock title %}
 
+{% block title %}Удаление задачи: {{ task.title }}{% endblock %}
 
 {% block content %}
-    <h1 class="my-4">Вы уверены, что хотите удалить "{{ task.title }}"?</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Удалить</button>
-        <a href="{% url 'todo:task_list' %}" class="btn btn-secondary">Отмена</a>
-    </form>
+        <div class="mt-4">
+            <h1 class="mb-4">Вы уверены, что хотите удалить «{{ task.title }}»?</h1>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" aria-label="Подтвердить удаление">Удалить</button>
+                <a href="{% url 'todo:task_list' %}" class="btn btn-secondary" aria-label="Отмена">Отмена</a>
+            </form>
+        </div>
 {% endblock %}

@@ -3,24 +3,24 @@
 {% block title %}Список задач{% endblock %}
 
 {% block content %}
+        <h1 class="my-4">Список задач</h1>
 
-    <main>
         <ul class="list-group">
             {% for task in tasks %}
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 <span>{{ task.title }}</span>
-
                 <div class="d-flex gap-2">
                     <a href="{% url 'todo:task_update' task.pk %}"
-                       class="btn btn-sm btn-warning">
+                       class="btn btn-sm btn-warning"
+                        aria-label="Редактировать задачу «{{ task.title }}»">
                         Редактировать
                     </a>
                     <a href="{% url 'todo:task_delete' task.pk %}"
-                       class="btn btn-sm btn-danger">
+                       class="btn btn-sm btn-danger"
+                        aria-label="Удалить задачу «{{ task.title }}»">
                         Удалить
                     </a>
                 </div>
-
             </li>
             {% empty %}
             <li class="list-group-item text-center">
@@ -28,6 +28,4 @@
             </li>
             {% endfor %}
         </ul>
-    </main>
-
 {% endblock %}
