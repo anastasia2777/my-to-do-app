@@ -49,7 +49,7 @@
                 <a href="{% url 'todo:task_create' %}" class="btn btn-primary">Добавить задачу</a>
                 <form action="{% url 'todo:logout' %}" method="post" class="d-inline">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Выйти</button>
+                    <button type="submit" class="btn btn-danger">Выйти</button>
                 </form>
             {% else %}
                 <a href="{% url 'todo:login' %}" class="btn btn-outline-primary">Войти</a>

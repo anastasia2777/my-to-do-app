@@ -3,7 +3,7 @@
 A simple yet functional **Task Manager** web application built with Django.  
 Create, view, edit, and delete tasks with user-friendly notifications and Bootstrap styling.
 
-# Features
+## Features
 
 - Add new tasks (title + optional description)
 - View all tasks in a clean list
@@ -11,6 +11,15 @@ Create, view, edit, and delete tasks with user-friendly notifications and Bootst
 - Delete tasks with confirmation
 - Success/error notifications using Django messages and Bootstrap toasts
 - Responsive design with Bootstrap 5
+
+## Database
+- SQLite (default for quick local development)
+- Full PostgreSQL support added:
+  - Switched from SQLite to PostgreSQL (`todo_database`)
+  - Configured via `.env` (DB_NAME, DB_USER, DB_PASSWORD, etc.)
+  - Proper user permissions and schema access set up
+  - Migrations applied successfully
+  - Easy to switch back or use in production
 
 ## Tech Stack
 

@@ -18,7 +18,9 @@
                 {% endif %}
             </div>
         {% endfor %}
-        <button type="submit">Зарегистрироваться</button>
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
     </form>
 
     <p><a href="{% url 'todo:login' %}">Уже есть аккаунт? Войти</a></p>

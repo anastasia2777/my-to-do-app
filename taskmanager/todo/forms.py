@@ -23,11 +23,11 @@ class TaskForm(forms.ModelForm):
         return value
 
     def clean_title(self):
-        title = self.cleaned_data.get('title', )
+        title = self.cleaned_data.get('title', '')
         return self._validate_forbidden_words(title, 'название задачи')
 
     def clean_description(self):
-        description = self.cleaned_data.get('description', )
+        description = self.cleaned_data.get('description', '')
         return self._validate_forbidden_words(description, 'описание')
 
 
@@ -49,7 +49,7 @@ class CustomUserCreationForm(UserCreationForm):
         label = "Пароль",
         widget = forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Придумайте пароль'}))
     password2 = forms.CharField(
-        label = "Пожтверждение пароля",
+        label = "Подтверждение пароля",
         widget = forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Повторите пароль'}))
     class Meta:
         model = User
