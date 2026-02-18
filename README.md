@@ -12,6 +12,23 @@ Create, view, edit, and delete tasks with user-friendly notifications and Bootst
 - Success/error notifications using Django messages and Bootstrap toasts
 - Responsive design with Bootstrap 5
 
+## Screenshots 📸
+![Главная страница со списком задач](screenshots/main.png)
+*Авторизованный пользователь видит только свои задачи*
+
+![Форма добавления задачи](screenshots/add_task.png)
+*Форма с кастомной валидацией (запрет грубых слов)*
+
+![Форма редактирования задачи](screenshots/update_task.png)
+*Редактирование*
+
+![Форма регистрации](screenshots/registration.png)
+*Регистрация*
+
+![Форма входа](screenshots/login.png)
+*Вход*
+
+
 ## Database
 - SQLite (default for quick local development)
 - Full PostgreSQL support added:
