@@ -16,7 +16,7 @@ Create, view, edit, and delete tasks with user-friendly notifications and Bootst
 ![Главная страница со списком задач](screenshots/main.png)
 *Авторизованный пользователь видит только свои задачи*
 
-![Форма добавления задачи](screenshots/add_task.png)
+![Форма добавления задачи](screenshots/create_task.png)
 *Форма с кастомной валидацией (запрет грубых слов)*
 
 ![Форма редактирования задачи](screenshots/update_task.png)
